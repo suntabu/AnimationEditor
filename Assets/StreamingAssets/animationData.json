@@ -1,0 +1,200 @@
+[
+  {
+    "animationName": "kiss",
+    "duration": 2,
+    "effects": [
+      {
+        "effectName": "kiss/lips.png",
+        "startTime": 0,
+        "stopTime": 2,
+        "size": [
+          0.3,
+          0.3
+        ],
+        "pathValues": [
+          0.5,
+          0.5,
+          0,
+
+
+          0.5,
+          0.5,
+          1
+        ],
+        "scaleValues": [
+          1,
+          1,
+          0,
+          1.5,
+          1.5,
+          0.2,
+          1.5,
+          1.5,
+          1
+        ],
+        "rotateValues": [
+          0.3,
+          0.3,
+          0.9,
+          0.9
+        ],
+        "position": [
+          0,
+          0.8
+        ]
+      },
+      {
+        "effectName": "kiss/red.png",
+        "startTime": 0.2,
+        "stopTime": 1.9,
+        "size": [
+          0.03,
+          0.03
+        ],
+        "pathValues": [
+          0.65,
+          0.48,
+          0,
+          0.65,
+          0.48,
+          1
+        ],
+        "scaleValues": [
+          0.5,
+          0.5,
+          0,
+          3,
+          3,
+          0.7,
+          3,
+          3,
+          1
+        ],
+        "rotateValues": [
+          0.3,
+          0.3,
+          0.9,
+          0.9
+        ],
+        "position": [
+          0,
+          0.8
+        ]
+      },
+      {
+        "effectName": "kiss/green.png",
+        "startTime": 0.4,
+        "stopTime": 1.8,
+        "size": [
+          0.03,
+          0.03
+        ],
+        "pathValues": [
+          0.766,
+          0.37,
+          0,
+          0.766,
+          0.375,
+          1
+        ],
+        "scaleValues": [
+          0.5,
+          0.5,
+          0,
+          3,
+          3,
+          0.7,
+          3,
+          3,
+          1
+        ],
+        "rotateValues": [
+          0.3,
+          0.3,
+          0.9,
+          0.9
+        ],
+        "position": [
+          0,
+          0.8
+        ]
+      },
+      {
+        "effectName": "kiss/blue.png",
+        "startTime": 0.6,
+        "stopTime": 1.7,
+        "size": [
+          0.03,
+          0.03
+        ],
+        "pathValues": [
+          0.867,
+          0.265,
+          0,
+          0.867,
+          0.265,
+          1
+        ],
+        "scaleValues": [
+          0.5,
+          0.5,
+          0,
+          3,
+          3,
+          0.7,
+          3,
+          3,
+          1
+        ],
+        "rotateValues": [
+          0.3,
+          0.3,
+          0.9,
+          0.9
+        ],
+        "position": [
+          0,
+          0.8
+        ]
+      },
+      {
+        "effectName": "kiss/cyan.png",
+        "startTime": 0.8,
+        "stopTime": 1.6,
+        "size": [
+          0.03,
+          0.03
+        ],
+        "pathValues": [
+          0.968,
+          0.15,
+          0,
+          0.968,
+          0.15,
+          1
+        ],
+        "scaleValues": [
+          0.5,
+          0.5,
+          0,
+          3,
+          3,
+          0.7,
+          3,
+          3,
+          1
+        ],
+        "rotateValues": [
+          0.3,
+          0.3,
+          0.9,
+          0.9
+        ],
+        "position": [
+          0,
+          0.8
+        ]
+      }
+    ]
+  }
+]
