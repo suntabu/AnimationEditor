@@ -17,7 +17,7 @@ public class ControlManager : MonoBehaviour
     private AnimationModel _currentAnimation;
 
     private static string _configFileName = "animationData.json";
-    private static string _configBasePath = @"E:\_Code\UnityProjects\AnimationEditor\Assets\StreamingAssets";
+    private static string _configBasePath = Application.streamingAssetsPath;
 
     private static string _animationConfigPath = _configBasePath + "/" + _configFileName;
 
@@ -66,6 +66,7 @@ public class ControlManager : MonoBehaviour
         if (_currentAnimation != null)
         {
             Save();
+            DisposeAnimationData();
         }
         _currentAnimation = animation;
     }
@@ -127,6 +128,19 @@ public class ControlManager : MonoBehaviour
 
     }
 
+    private void DisposeAnimationData()
+    {
+        if (_currentAnimation != null)
+        {
+            for (int i = 0; i < _currentAnimation.effects.Count; i++)
+            {
+                var ef = _currentAnimation.effects[i];
+                Destroy(ef.ImageGameObject.gameObject);
+            }
+            _currentAnimation.IsInit = false;
+        }
+
+    }
 
     private void SpawnAnimation(AnimationModel animation)
     {
