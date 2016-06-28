@@ -17,12 +17,14 @@ public class ControlManager : MonoBehaviour
     private AnimationModel _currentAnimation;
 
     private static string _configFileName = "animationData.json";
-    private static string _configBasePath = Application.streamingAssetsPath;
+    private static string _configBasePath; 
 
-    private static string _animationConfigPath = _configBasePath + "/" + _configFileName;
+    private static string _animationConfigPath;
 
     void Awake()
     {
+        _configBasePath = Application.streamingAssetsPath;
+        _animationConfigPath = _configBasePath + "/" + _configFileName;
         if (File.Exists(_animationConfigPath))
         {
             string content = File.ReadAllText(_animationConfigPath);
