@@ -18,8 +18,6 @@ public class ControlManager : MonoBehaviour
     public Slider frameSlider;
 
 
-
-
     private List<AnimationModel> _animations;
     private AnimationModel _currentAnimation;
 
@@ -102,7 +100,6 @@ public class ControlManager : MonoBehaviour
             collapsedTime += Time.deltaTime;
             return DoCollapsedTimeFrame(collapsedTime);
 
-
         }));
     }
 
@@ -116,9 +113,9 @@ public class ControlManager : MonoBehaviour
         }
         else
         {
-            for (int i = 0; i < _currentAnimation.effects.Count; i++)
+            for (int i = 0; i < _currentAnimation.elements.Count; i++)
             {
-                var effect = _currentAnimation.effects[i];
+                var effect = _currentAnimation.elements[i];
                 var v = effect.PathFitting.GetValue(collapseT) - coordnateOffeset;
                 effect.ImageGameObject.rectTransform.anchoredPosition = new Vector2(v.x, -v.y);
                 effect.ImageGameObject.rectTransform.localScale = effect.ScaleFitting.GetValue(collapseT);
@@ -147,9 +144,9 @@ public class ControlManager : MonoBehaviour
     {
         if (_currentAnimation != null)
         {
-            for (int i = 0; i < _currentAnimation.effects.Count; i++)
+            for (int i = 0; i < _currentAnimation.elements.Count; i++)
             {
-                var ef = _currentAnimation.effects[i];
+                var ef = _currentAnimation.elements[i];
                 Destroy(ef.ImageGameObject.gameObject);
             }
             _currentAnimation.IsInit = false;
@@ -162,13 +159,13 @@ public class ControlManager : MonoBehaviour
         container_width = effectRoot.rect.width;
         container_height = effectRoot.rect.height;
 
-        for (int i = 0; i < animation.effects.Count; i++)
+        for (int i = 0; i < animation.elements.Count; i++)
         {
-            var effect = animation.effects[i];
+            var effect = animation.elements[i];
 
             RawImage image = GameObject.Instantiate(ImagePrefab);
             var tex = new Texture2D(0, 0);
-            tex.LoadImage(File.ReadAllBytes(Path.Combine(_configBasePath, "anim/" + effect.effectName)));
+            tex.LoadImage(File.ReadAllBytes(Path.Combine(_configBasePath, "anim/" + effect.elementName)));
             image.texture = tex;
             image.transform.SetParent(effectRoot);
             image.SetNativeSize();

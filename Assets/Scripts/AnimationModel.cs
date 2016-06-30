@@ -11,7 +11,7 @@ public class AnimationModel
 
     public float duration;
 
-    public List<EffectModel> effects;
+    public List<ElementModel> elements;
 
     public bool IsInit { get;  set; }
 

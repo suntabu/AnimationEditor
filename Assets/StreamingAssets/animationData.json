@@ -2,9 +2,9 @@
   {
     "animationName": "kiss",
     "duration": 2,
-    "effects": [
+    "elements": [
       {
-        "effectName": "kiss/lips.png",
+        "elementName": "kiss/lips.png",
         "startTime": 0,
         "stopTime": 2,
         "size": [
@@ -44,7 +44,7 @@
         ]
       },
       {
-        "effectName": "kiss/red.png",
+        "elementName": "kiss/red.png",
         "startTime": 0.2,
         "stopTime": 1.9,
         "size": [
@@ -82,7 +82,7 @@
         ]
       },
       {
-        "effectName": "kiss/green.png",
+        "elementName": "kiss/green.png",
         "startTime": 0.4,
         "stopTime": 1.8,
         "size": [
@@ -120,7 +120,7 @@
         ]
       },
       {
-        "effectName": "kiss/blue.png",
+        "elementName": "kiss/blue.png",
         "startTime": 0.6,
         "stopTime": 1.7,
         "size": [
@@ -158,7 +158,7 @@
         ]
       },
       {
-        "effectName": "kiss/cyan.png",
+        "elementName": "kiss/cyan.png",
         "startTime": 0.8,
         "stopTime": 1.6,
         "size": [

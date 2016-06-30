@@ -40,6 +40,9 @@ public class AnimationEditorPanel : EditorWindow
             _animations = new List<AnimationModel>();
         }
         Debug.Log(_animations.Count);
+
+
+
     }
 
 
@@ -78,9 +81,9 @@ public class AnimationEditorPanel : EditorWindow
             GUILayout.Space(5);
             GUILayout.Label("子动画");
             _effectScroll = EditorGUILayout.BeginScrollView(_effectScroll);
-            for (int i = 0; i < _currentEditAnimation.effects.Count; i++)
+            for (int i = 0; i < _currentEditAnimation.elements.Count; i++)
             {
-                var effect = _currentEditAnimation.effects[i];
+                var effect = _currentEditAnimation.elements[i];
                 LayoutEffectModel(effect);
 
                 GUILayout.Space(15);
@@ -103,26 +106,26 @@ public class AnimationEditorPanel : EditorWindow
     }
 
 
-    private void LayoutEffectModel(EffectModel effect)
+    private void LayoutEffectModel(ElementModel element)
     {
         GUILayout.BeginHorizontal();
         GUILayout.Label("素材路径" + "：");
-        effect.effectName = EditorGUILayout.TextField(effect.effectName, GUILayout.Height(30));
+        element.elementName = EditorGUILayout.TextField(element.elementName, GUILayout.Height(30));
         GUILayout.EndHorizontal();
 
         GUILayout.BeginHorizontal();
         GUILayout.Label("开始时间" + "：");
-        effect.startTime = EditorGUILayout.FloatField(effect.startTime, GUILayout.Height(30));
+        element.startTime = EditorGUILayout.FloatField(element.startTime, GUILayout.Height(30));
         GUILayout.EndHorizontal();
 
         GUILayout.BeginHorizontal();
         GUILayout.Label("结束时间" + "：");
-        effect.stopTime = EditorGUILayout.FloatField(effect.stopTime, GUILayout.Height(30));
+        element.stopTime = EditorGUILayout.FloatField(element.stopTime, GUILayout.Height(30));
         GUILayout.EndHorizontal();
 
-        LayoutValues("路径变化：", effect.pathValues);
-        LayoutValues("缩放变化：", effect.scaleValues);
-        //layoutValues("旋转变化：", effect.rotateValues);
+        LayoutValues("路径变化：", element.pathValues);
+        LayoutValues("缩放变化：", element.scaleValues);
+        //layoutValues("旋转变化：", element.rotateValues);
     }
 
     private static void LayoutValues(string title, float[] values)
