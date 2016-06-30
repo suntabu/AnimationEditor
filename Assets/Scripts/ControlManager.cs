@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -12,12 +13,18 @@ public class ControlManager : MonoBehaviour
     public Button RunAnimationBtn;
     public RawImage ImagePrefab;
     public RectTransform effectRoot;
+    public InputField animationName;
+    public InputField durationTime;
+    public Slider frameSlider;
+
+
+
 
     private List<AnimationModel> _animations;
     private AnimationModel _currentAnimation;
 
     private static string _configFileName = "animationData.json";
-    private static string _configBasePath; 
+    private static string _configBasePath;
 
     private static string _animationConfigPath;
 
@@ -37,6 +44,16 @@ public class ControlManager : MonoBehaviour
         }
 
         Debug.Log(_animations.Count);
+
+
+        frameSlider.onValueChanged.AddListener(t =>
+        {
+            if (_currentAnimation != null)
+            {
+                float deltaTime = _currentAnimation.duration * t;
+                DoCollapsedTimeFrame(deltaTime);
+            }
+        });
     }
 
 
@@ -76,53 +93,49 @@ public class ControlManager : MonoBehaviour
 
 
 
-
-
-
-
-
-
-
-
-
     private float collapsedTime = 0;
     private void RunAnimation()
     {
         collapsedTime = 0;
         CoroutineManager.Instance.DoAction(CoroutineRunner.EveryFrameDoOneAction(delegate
         {
-            if (!_currentAnimation.IsInit)
-            {
-                SpawnAnimation(_currentAnimation);
-
-                return true;
-            }
-            else
-            {
-                collapsedTime += Time.deltaTime;
-                for (int i = 0; i < _currentAnimation.effects.Count; i++)
-                {
-                    var effect = _currentAnimation.effects[i];
-                    var v = effect.PathFitting.GetValue(collapsedTime) - coordnateOffeset;
-                    effect.ImageGameObject.rectTransform.anchoredPosition = new Vector2(v.x, -v.y);
-                    effect.ImageGameObject.rectTransform.localScale = effect.ScaleFitting.GetValue(collapsedTime);
-                    Debug.Log(effect.ImageGameObject.rectTransform.localScale + "    " + effect.ScaleFitting.GetValue(collapsedTime));
-                }
-                if (collapsedTime > _currentAnimation.duration)
-                {
-                    collapsedTime = 0;
-                    Debug.Log("done!");
-                    return false;
-                }
-                else
-                {
-                    return true;
-                }
-
-            }
+            collapsedTime += Time.deltaTime;
+            return DoCollapsedTimeFrame(collapsedTime);
 
 
         }));
+    }
+
+    private bool DoCollapsedTimeFrame(float collapseT)
+    {
+        if (!_currentAnimation.IsInit)
+        {
+            SpawnAnimation(_currentAnimation);
+
+            return true;
+        }
+        else
+        {
+            for (int i = 0; i < _currentAnimation.effects.Count; i++)
+            {
+                var effect = _currentAnimation.effects[i];
+                var v = effect.PathFitting.GetValue(collapseT) - coordnateOffeset;
+                effect.ImageGameObject.rectTransform.anchoredPosition = new Vector2(v.x, -v.y);
+                effect.ImageGameObject.rectTransform.localScale = effect.ScaleFitting.GetValue(collapseT);
+                Debug.Log(effect.ImageGameObject.rectTransform.localScale + "    " +
+                          effect.ScaleFitting.GetValue(collapseT));
+            }
+            if (collapseT > _currentAnimation.duration)
+            {
+                collapseT = 0;
+                Debug.Log("done!");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
     }
 
     private void Save()
